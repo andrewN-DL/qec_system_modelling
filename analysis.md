@@ -41,7 +41,7 @@ The simulation can be used with different values of $\lambda$. As the sim in not
 
 Low values of $\lambda$ generally overloads the system. More qubits arrive than can be processed by the system. In particular, component B is the bottleneck. Its queue is constantly near capacity causing component A to be blocked and qubits to pile up in queue A. Component C operated mroe quickly than B on average, and can generally clear its queue even for low values of $\lambda$.
 
-We approach critical behaviour of the system at approximately $\lambda = 2.1-2.3$. This is where the B queue stops maintaining a queue length close to capacity. This stops component A from being blocked. As qubits through A are processed quicker than this on average, the A queue does not grow too large.
+We approach critical behaviour of the system at approximately $\lambda = 2.0-2.2$. This is where the B queue stops maintaining a queue length close to capacity. This stops component A from being blocked. As qubits through A are processed quicker than this on average, the A queue does not grow too large.
 
 As $\lambda$ continues increasing above 2.5, the system becomes underutilised. All components easily clear their queues and spend more time idle. Decoding rate drops as qubits arrive less frequently and components no longer get blocked by full queues downstream
 
@@ -51,7 +51,7 @@ In general as long as component B can clear its queue fast enough to prevent A b
 #### Throughput (Decoding Rate)
 
 ![Decoding rate](/plots/decoding_rate.png)
-The maximum acheivable decoding rate for the system is approximately $0.47$ qubits/ $\mu s$. Lower values of $\lambda < 2.1$ operate at this decoding rate, limited by the slowest component (component B). As $\lambda$ increases to $2.1 - 2.2$, the queue at B spends less time at capacity, and this rate starts to drop. 
+The maximum acheivable decoding rate for the system is approximately $0.47$ qubits/ $\mu s$. Lower values of $\lambda < 2.0$ operate at this decoding rate, limited by the slowest component (component B). As $\lambda$ increases to $2.0 - 2.3$, the queue at B spends less time at capacity, and this rate starts to drop. 
 
 As $\lambda$ continues above 2.5, A, and B queue lengths continue to fall until they are empty for the majority of the time. Qubits entering the system do not need to spend much time queueing, or for larger values of $\lambda$, they spend no time at all. Decoding rate becomes ~ $1/\lambda$, as the lack of backlogs means there is a stable flow of qubits through the system.
 
@@ -63,10 +63,10 @@ As $\lambda$ continues above 2.5, A, and B queue lengths continue to fall until 
 
 Latency is defined as the total time qubits spend in the system
 - For low values of $\lambda$ latency is high. As the simulation progresses, the latency continues to increase as the bottleneck at component B causes queues at A to continuiously increase. By icnreasing $\lambda$ around this range ($\lambda < 2$) the rate at which these queues build up decreases, but does not stabilise the latencty.
-- For $\lambda = 2.1-2.3$ the latency stabilises, reaching values of approximately $20\mu s$. Component B can manage its queues meaning component A can handle its queue and prevent it growing infinitely.
+- For $\lambda = 2.0-2.5$ the latency stabilises, reaching values of approximately $20\mu s$. Component B can manage its queues meaning component A can handle its queue and prevent it growing infinitely.
 - As $\lambda \rightarrow \infty$ we expect average queue lengths to go towards zero, and latency drops to the sum of the means of the component processing times.
 
-We can also examine the time spent in the system from entering A. For values of $\lambda < 2$ it is much lower than the total latency, showing that the extra time overall spent in the system is due to time spent in A queues. The sharp decline around $\lambda = 2.1 - 2.3$ is due to sharply decreasing B queue times.
+We can also examine the time spent in the system from entering A. For values of $\lambda < 2$ it is much lower than the total latency, showing that the extra time overall spent in the system is due to time spent in A queues. The sharp decline around $\lambda = 2.0 - 2.5$ is due to sharply decreasing B queue times.
  
 #### Component Utilisation
 ![Utilisation](/plots/component_utilisation.png)
@@ -79,7 +79,7 @@ Component utilisation is the portion of time each component spends processing qu
 
 
 #### Queue lengths over time for different values of $\lambda$
-![Lam = 0.2](/plots/queue_0.2.png)
-![Lam = 2.15](/plots/queue_2.15.png)
+![Lam = 0.2](/plots/queue_0-2.png)
+![Lam = 2.15](/plots/queue_2-15.png)
 ![Lam = 4](/plots/queue_4.png)
 
