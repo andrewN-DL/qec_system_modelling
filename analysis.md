@@ -76,16 +76,22 @@ Component utilisation is the portion of time each component spends processing qu
 
 As discussed above, low values of $\lambda$ generally overloads the system. More qubits arrive than can be processed by the system. In particular, component B is the bottlenect. Its queue is constantly near capacity causing component A to be blocked and qubits to pile up in queue A.
 
-We approach critical behaviour of the system at approximately $\lambda = 2.1-2.3$. This is where the B queue 
+We approach critical behaviour of the system at approximately $\lambda = 2.1-2.3$. This is where the B queue stops maintaining a queue length clost to capacity. 
+
+As $\lambda$ continues increasing above 2.5, the system becomes underutilised. All components easily clear their queues and spend more time idle. Decoding rate drops as qubits arrive less frequently and components no longer get blocked by full queues downstream
+
+#### Queue lengths over time for different values of $\lambda$
+![Lam = 0.2](/plots/queue_0.2.png)
+![Lam = 2.15](/plots/queue_2.15.png)
+![Lam = 4](/plots/queue_4.png)
 
 The latency for low values of lambda is very high. This reflects the long times qubits spend in queues at A as it grows infinitely. For constant, low values of $\lambda$, total latency will not stabilise, as qubits wait longer as the A queue length increases. increasing the value of $\lambda$ decreases the rate at which this queue grows, but does not allow the queue to stabilise until $\lambda = 2.1$. We can also examine times as from when qubits enter component A. For low values of $\lambda$ there is a constant time in the system of ~$170\mu s$. This reflects times when the B queue is at capacity. As long as the B queue is operating close to capacity, changes in $\lambda$ will have no effect of most high level statistics (utilisations, decoding rate, etc), instead the only factor that changes is the rate of growth of the A queue
 
-![Lam = 0.2](/plots/queue_0.2.png)
+
 
 As we increase $\lambda$ to approximately $2.1 - 2.2$ we reach a point where the queues at B start to stabilise, as opposed to staying at capacity. Average queue length for B drops dramatically. The portion of time that component A spends blocked drops, helping the A queue to stabilise. This is the ideal maximum decoding rate at ~ 0.47qubits/ $\mu s$. Latencies drop dramatically to ~ $15\mu s$ as queues shorten. Although queues are not infinitely growing, we still see B is the bottleneck at these values of lambda, as the queue lengths for C remain very low.
 
-![Lam = 2.15](/plots/queue_2.15.png)
+
 
 As $\lambda$ continues above 2.5, A, and B queue lengths continue to fall until they are empty for the majority of the time. Qubits entering the system do not need to spend much time queueing, or for larger values of $\lambda$, they spend no time at all. Decoding rate becomes ~ $1/\lambda$, as the lack of backlogs means there is a stable flow of qubits through the system. Utilisation for all components drops as the system/components regulary completely clear themselves of qubits before new ones enter. As $\lambda \rightarrow \infty$ we expect average queue lengths to go towards zero, and latency drops to the sum of the means of the component processing times.
 
-![Lam = 4](/plots/queue_4.png)
