@@ -1,0 +1,5 @@
+- Should change line 124, 125. Need to set `a_busy=True` add time that A is finished processing next qubit if `a_queue` is not empty Component A should still be allowed process qubits, before being stoppe. Then continue. This slightly affects utilisation rates. Less important as B is the bottleneck. Can sort this by removing lines 124, 125; adding if statement to 'start next a job' block that sets `a_stopped=true` when b queue is full; then add all the logic in the a_finished event into an else block of `if a_stopped a_time = float('inf')`. This ensures the component A processes the qubit but does not release it if the B queue is full. Could do same with B block but this never gets blocked so will have no effect
+- Line 158. `a_stopped` should only be false if another qubit enters the B component. Add that line to this logic block
+- Could remove classes as slowing down and not providing much functionality
+- Error bars for latency from A wrongt. Typo.
+- Latency too high for large values of lambda. Can't move on from a component until the next qubit enters. Fixed by removing the qubits through a
