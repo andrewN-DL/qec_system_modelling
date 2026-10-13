@@ -2,6 +2,8 @@
 
 ## Overview
 
+In a fault-tolerant quantum computer, syndrome data must be read out and decoded in real time. If the processing pipeline can’t keep pace with the arrival rate, a backlog builds and logical-gate latency grows. This project models a simplified multistage pipeline to find its maximum sustainable rate and bottleneck
+
 This project simulates a three-stage qubit readout processing system to investigate its performance under different input arrival rates. The system consists of components A, B, and C, with queues between processing stages.
 
 The simulation is used to analyse:
