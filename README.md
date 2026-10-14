@@ -1,6 +1,6 @@
 # Readout Pipeline Queueing Simulation
 
-Discrete-event simulation of a three-stage processing pipeline for qubit readout data (A → B → C) with finite buffers and backpressure, used to find the bottleneck stage and the maximum sustainable arrival rate.
+Discrete-event simulation of a three-stage processing pipeline for qubit readout data (A -> B -> C) with finite buffers and backpressure, used to find the bottleneck stage and the maximum sustainable arrival rate.
 
 ## Overview
 
@@ -19,12 +19,12 @@ The model is implemented in Python using a discrete-event simulation. Multiple r
 
 | Stage | Behaviour | Processing time |
 |---|---|---|
-| Input | Poisson arrivals, mean inter-arrival time λ; unbounded queue in front of A | n/a |
-| A | Reads message; blocks if the A→B buffer is full | Uniform(1.5, 2.2) µs (mean 1.85 µs) |
-| A→B buffer | FIFO, capacity 100 | n/a |
-| B | Blocks if the B→C buffer is full | Log-normal, μ = 0.5, σ² = 0.5 (mean ≈ 2.12 µs) |
-| B→C buffer | FIFO, capacity 25 | n/a |
-| C | Output stage | Constant, 1.5 µs |
+| Input | Poisson arrivals, mean inter-arrival time $\lambda$; unbounded queue in front of A | n/a |
+| A | Reads message; blocks if the A -> B buffer is full | Uniform(1.5, 2.2) $\mu$ s (mean 1.85 $\mu$ s) |
+| A -> B buffer | FIFO, capacity 100 | n/a |
+| B | Blocks if the B -> C buffer is full | Log-normal, $\mu$ = 0.5, $\sigma ^2$ = 0.5 (mean ~ 2.12 $\mu$ s) |
+| B -> C buffer | FIFO, capacity 25 | n/a |
+| C | Output stage | Constant, 1.5 $\mu$ s |
 
 ## Method
 
